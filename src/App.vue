@@ -1,17 +1,14 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <Classroom />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Classroom from '@/components/Classroom'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Classroom
   }
 }
 </script>
@@ -21,8 +18,16 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  
+}
+html, body {
+  margin: 0;
+  position: relative;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
 }
 </style>
