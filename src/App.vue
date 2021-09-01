@@ -1,15 +1,21 @@
 <template>
-    <Classroom />
+    <div style="height: 100%;">
+      <Classes />
+      <Classroom v-if="$store.state.activeClass"/>
+    </div>
 </template>
 
 <script>
 import Classroom from '@/components/Classroom'
+import Classes from '@/components/Classes'
 
 export default {
   name: 'App',
   components: {
-    Classroom
+    Classroom,
+    Classes
   }
+
 }
 </script>
 
@@ -23,6 +29,7 @@ export default {
 }
 html, body {
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
   position: relative;
   height: 100%;
 }

@@ -11,14 +11,34 @@
       />
     </div>
     <div class="classroom" ref="classroom">
+      <div class="tv"></div>
+
+      <div class="furniture tables-left">
+        <div class="table" v-for="table in 6" :key="table"></div>
+      </div>
+
+      <div class="furniture tables-right">
+        <div class="table" v-for="table in 6" :key="table"></div>
+        <div class="table elvera"></div>
+      </div>
+
+      <div class="furniture tables-horizontal-right">
+        <div class="table" v-for="table in 2" :key="table"></div>
+      </div>
+
+      <div class="furniture tables-bottom">
+        <div class="table" v-for="table in 2" :key="table"></div>
+      </div>
+
       <Seat
         v-for="(seat, index) in Number(occupiedSeats)"
-        :key="index"
+        :key="seat + $store.state.activeClass"
+        :index="index"
         class="seat"
         ref="seat"
         :style="setPositionForSeat(index)"
       />
-      <Seat :editable="false" class="elvera" :text="'Docent'" />
+      <!-- <Seat :editable="false" class="seat elvera" :text="'Docent'" /> -->
     </div>
   </div>
 </template>
@@ -28,7 +48,7 @@ export default {
   components: { Seat },
   data() {
     return {
-      occupiedSeats: 28,
+      occupiedSeats: 30,
       seatMap: [
         { x: 0, y: 0 },
         { x: 5, y: 0 },
@@ -58,6 +78,8 @@ export default {
         { x: 1, y: 14 },
         { x: 2, y: 14 },
         { x: 3, y: 14 },
+        { x: 4, y: 14 },
+        { x: 5, y: 14 },
       ],
     };
   },
@@ -70,10 +92,28 @@ export default {
     window.addEventListener("resize", this.updatePositions);
     // console.dir(document.querySelector('.classroom'))
   },
+  computed: {
+    maxSeatX() {
+      return this.seatMap.reduce((acc, curr) => {
+        if (curr.x > acc) {
+          acc = curr.x;
+        }
+        return acc;
+      }, 0);
+    },
+    maxSeatY() {
+      return this.seatMap.reduce((acc, curr) => {
+        if (curr.y > acc) {
+          acc = curr.y;
+        }
+        return acc;
+      }, 0);
+    },
+  },
   watch: {
     occupiedSeats() {
       this.updatePositions();
-    }
+    },
   },
   methods: {
     updatePositions() {
@@ -83,50 +123,25 @@ export default {
     },
 
     setPositionForSeat(index) {
-
       function arduinoMap(x, inMin, inMax, outMin, outMax) {
-        return (x-inMin) * (outMax - outMin) / (inMax - inMin) + outMin
+        return ((x - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
       }
 
-      // const classroomHeight = window.innerHeight;
-      // const classroomWidth = window.innerWidth;
-
-      // const seat = this.$refs.seat[index].$el;
-
-      // const classroomHeight = this.$refs.classroom.offsetHeight;
-      // const classroomWidth = this.$refs.classroom.offsetWidth;
-
-      const maxHeight = this.seatMap.reduce((acc, curr) => {
-        if (curr.y > acc) {
-          acc = curr.y;
-        }
-        return acc;
-      }, 0);
-
-      const maxWidth = this.seatMap.reduce((acc, curr) => {
-        if (curr.x > acc) {
-          acc = curr.x;
-        }
-        return acc;
-      }, 0);
-
-      // const multiplierY = 30
-      // const multiplierX = 40
-      // const multiplierY = classroomHeight / (maxHeight + 1);
-      // const multiplierX = classroomWidth / 2 / (maxWidth + 1);
-
-      // const x = this.seatMap[index].x * multiplierX;
-
-      // // seat.style.left = `calc(28% + ${this.seatMap[index].x * multiplierX}px)`;
-      // seat.style.left = `${100 /this.seatMap[index].x}%`;
-      // seat.style.top = `${this.seatMap[index].y * multiplierY}px`;
-
-      const x = arduinoMap(this.seatMap[index].x, 0, maxWidth, 26, 58)
-      const y = arduinoMap(this.seatMap[index].y, 0, maxHeight, 5, 74)
+      const x = arduinoMap(this.seatMap[index].x, 0, this.maxSeatX, 20, 60);
+      const y = arduinoMap(this.seatMap[index].y, 0, this.maxSeatY, 5, 85);
+      let jc =
+        this.seatMap[index].x === this.maxSeatX ? "flex-end" : "flex-start";
+      if (
+        this.seatMap[index].x === this.maxSeatX &&
+        this.seatMap[index].y === this.maxSeatY
+      ) {
+        jc = "flex-start";
+      }
 
       return {
-          left: `${x}%`,
-          top: `${y}%`
+        left: `${x}%`,
+        top: `${y}%`,
+        justifyContent: jc,
       };
     },
   },
@@ -137,6 +152,7 @@ export default {
 .numberpicker {
   position: fixed;
   right: 0;
+  z-index: 2;
 }
 
 .page {
@@ -146,28 +162,90 @@ export default {
   height: 100%;
 }
 
+.tv {
+  position: absolute;
+  width: 30%;
+  height: 2%;
+  left: 50%;
+  background: grey;
+}
+
+.table {
+  background: #ab5c2c;
+  border-radius: 4%;
+  width: 16%;
+  height: 10%;
+  margin: 5px;
+
+  &.elvera {
+    width: 20%;
+  }
+}
+
+.furniture {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+}
+
+.tables-left {
+  // position: absolute;
+}
+
+.tables-right {
+  align-items: flex-end;
+}
+
+.tables-horizontal-right {
+  // align-items: flex-end;
+  position: absolute;
+  left: 100%;
+  top: 56%;
+  // flex-direction: row;
+  display: block;
+  .table {
+    display: inline-block;
+  }
+}
+
+.tables-bottom {
+  flex-direction: row;
+  align-items: flex-end;
+
+  .table {
+    width: 15%;
+    height: 7%;
+  }
+}
+
 .classroom {
-  background: url("../assets/classroom.jpg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: 50%;
+  background: #fffff0;
+  // background: url("../assets/classroom.jpg");
+  // background-size: contain;
+  // background-repeat: no-repeat;
+  // background-position: 50%;
   // height: 100%;
   // width: 100%;
+
+  left: 50%;
+  transform: translateX(-50%);
+
   max-width: 100%;
   max-height: 100%;
   position: relative;
   aspect-ratio: 113 / 135;
-  border: 1px solid red;
-}
-
-.elvera {
-  position: absolute;
-  top: 65%;
-  left: 50%;
 }
 
 .seat {
   position: absolute;
+
+  &.elvera {
+    position: absolute;
+    top: 84%;
+    left: 76%;
+  }
 }
 
 // .seat {
