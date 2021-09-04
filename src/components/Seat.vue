@@ -38,10 +38,10 @@ export default {
 
 <style lang="scss" scoped>
 .seat {
-  $size: 3vh;
+  $size: 3%;
   border-radius: 20px;
   height: $size;
-  width: 100px;
+  width: 20%;
   border: 1px solid black;
   transform: rotate(-20deg);
   display: flex;

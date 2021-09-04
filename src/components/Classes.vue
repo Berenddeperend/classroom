@@ -10,7 +10,7 @@
         :class="{ active: className === $store.state.activeClass }"
       >
         {{ className }}
-        <button class="delete" v-if="className === $store.state.activeClass" @click="removeClass(className)">X</button>
+        <button class="delete" v-if="className === $store.state.activeClass" @click.stop="removeClass(className)">X</button>
       </li>
     </ul>
     <button @click="addClass">Klas toevoegen</button>
@@ -23,8 +23,9 @@ export default {
     };
   },
   methods: {
+    
       removeClass(className) {
-        if(window.confirm(`Wil je ${className} echt verwijderen?`)) {
+        if(window.confirm(`Wil je '${className}' echt verwijderen?`)) {
             this.$store.commit('removeClass', className)
         }
       },

@@ -175,7 +175,7 @@ export default {
   border-radius: 4%;
   width: 16%;
   height: 10%;
-  margin: 5px;
+  margin: 0.5%;
 
   &.elvera {
     width: 20%;
@@ -202,7 +202,7 @@ export default {
   // align-items: flex-end;
   position: absolute;
   left: 100%;
-  top: 56%;
+  top: 54%;
   // flex-direction: row;
   display: block;
   .table {

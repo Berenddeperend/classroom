@@ -6,7 +6,6 @@ import { cloneDeep } from 'lodash'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  // ...
   plugins: [createPersistedState()],
 
   state: {
@@ -30,32 +29,24 @@ const store = new Vuex.Store({
       const newClasses = cloneDeep(state.classes);
       newClasses[state.activeClass][payload.index] = payload.student;
       state.classes = newClasses
-      // Vue.set(state.classes[state.activeClass][payload.index], payload.student)
     },
     removeClass(state, className) {
       // Vue.delete(state.classes, className)
       const newClasses = cloneDeep(state.classes);
       delete newClasses[className]
-      console.log('newClasses: ', newClasses);
-
       const classes = Object.keys(state.classes)
 
       if(classes[0] === state.activeClass) {
         if(classes[1]) {
-          console.log('classes[1]: ', classes[1]);
           state.activeClass = classes[1]
         } else {
-          console.log('null: ', null);
           state.activeClass = null
         }
       } else {
-        console.log('classes[0]: ', classes[0]);
         state.activeClass = classes[0]
       }
-
-      state.classes = newClasses
       
-      // state.activeClass = Object.keys(state.classes)[0];
+      state.classes = newClasses;
     }
   }
 });
