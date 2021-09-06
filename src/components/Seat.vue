@@ -42,9 +42,11 @@ export default {
   border-radius: 20px;
   height: $size;
   width: 20%;
-  border: 1px solid black;
+  border: 2px solid #cbcbcb;
+  background: white;
   transform: rotate(-20deg);
   display: flex;
+  text-align: center;
   align-items: center;
   justify-content: flex-start;
 }

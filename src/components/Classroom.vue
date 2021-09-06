@@ -221,7 +221,7 @@ export default {
 }
 
 .classroom {
-  background: #fffff0;
+  
   // background: url("../assets/classroom.jpg");
   // background-size: contain;
   // background-repeat: no-repeat;
