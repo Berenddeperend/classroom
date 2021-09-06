@@ -38,13 +38,16 @@ export default {
 
 <style lang="scss" scoped>
 .seat {
-  $size: 3%;
-  border-radius: 20px;
-  height: $size;
+  border-radius: 1vh;
+  height: 3%;
   width: 20%;
   border: 2px solid #cbcbcb;
   background: white;
-  transform: rotate(-20deg);
+  transform: rotate(-29deg);
+  font-size: 2vh;
+  font-weight: bold;
+  // font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: 'Oswald', sans-serif;
   display: flex;
   text-align: center;
   align-items: center;
