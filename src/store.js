@@ -31,7 +31,6 @@ const store = new Vuex.Store({
       state.classes = newClasses
     },
     removeClass(state, className) {
-      // Vue.delete(state.classes, className)
       const newClasses = cloneDeep(state.classes);
       delete newClasses[className]
       const classes = Object.keys(state.classes)
