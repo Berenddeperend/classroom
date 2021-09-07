@@ -47,10 +47,12 @@ export default {
   font-size: 2vh;
   font-weight: bold;
   // font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-family: 'Oswald', sans-serif;
+  // font-family: 'Oswald', sans-serif;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: flex-start;
+
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
 }
 </style>

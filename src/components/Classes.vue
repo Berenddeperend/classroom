@@ -23,6 +23,7 @@
   </div>
 </template>
 <script>
+import {maxClassSize} from '@/constants.js'
 export default {
   data() {
     return {};
@@ -39,7 +40,7 @@ export default {
         this.$store.commit({
           type: "addClass",
           className,
-          length: 30,
+          length: maxClassSize,
         });
 
         this.$store.commit("setActiveClass", className);

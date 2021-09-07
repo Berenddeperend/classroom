@@ -43,43 +43,49 @@
   </div>
 </template>
 <script>
+import {maxClassSize} from '@/constants.js'
 import Seat from "@/components/Seat";
+
+const a = 'white';
+// const b = '#ab5c2c'
+const b = '#f7d9c7'
+
 export default {
   components: { Seat },
   data() {
     return {
-      occupiedSeats: 30,
+      occupiedSeats: maxClassSize,
       seatMap: [
-        { x: 0, y: 0 },
-        { x: 5, y: 0 },
-        { x: 0, y: 1 },
-        { x: 5, y: 1 },
-        { x: 0, y: 2 },
-        { x: 5, y: 2 },
-        { x: 0, y: 3 },
-        { x: 5, y: 3 },
-        { x: 0, y: 4 },
-        { x: 5, y: 4 },
-        { x: 0, y: 5 },
-        { x: 5, y: 5 },
-        { x: 0, y: 6 },
-        { x: 5, y: 6 },
-        { x: 0, y: 7 },
-        { x: 5, y: 7 },
-        { x: 0, y: 8 },
-        { x: 5, y: 8 },
-        { x: 0, y: 9 },
-        { x: 5, y: 9 },
-        { x: 0, y: 10 },
-        { x: 0, y: 11 },
-        { x: 0, y: 12 },
-        { x: 0, y: 13 },
-        { x: 0, y: 14 },
-        { x: 1, y: 14 },
-        { x: 2, y: 14 },
-        { x: 3, y: 14 },
-        { x: 4, y: 14 },
-        { x: 5, y: 14 },
+        { x: 0, y: 0, color: a },
+        { x: 5, y: 0, color: a },
+        { x: 0, y: 1, color: a },
+        { x: 5, y: 1, color: a },
+        { x: 0, y: 2, color: b },
+        { x: 5, y: 2, color: b },
+        { x: 0, y: 3, color: b },
+        { x: 5, y: 3, color: b },
+        { x: 0, y: 4, color: a },
+        { x: 5, y: 4, color: a },
+        { x: 0, y: 5, color: a },
+        { x: 5, y: 5, color: a },
+        { x: 0, y: 6, color: b },
+        { x: 5, y: 6, color: b },
+        { x: 0, y: 7, color: b },
+        { x: 5, y: 7, color: b },
+        { x: 0, y: 8, color: a },
+        { x: 5, y: 8, color: a },
+        { x: 0, y: 9, color: a },
+        { x: 5, y: 9, color: a },
+        { x: 0, y: 10, color: b },
+        { x: 0, y: 11, color: b },
+        { x: 0, y: 12, color: a },
+        { x: 0, y: 13, color: a },
+        { x: 0, y: 14, color: b },
+        { x: 1, y: 14, color: b },
+        { x: 2, y: 14, color: a },
+        { x: 3, y: 14, color: a },
+        { x: 4, y: 14, color: b },
+        { x: 5, y: 14, color: b },
       ],
     };
   },
@@ -142,6 +148,7 @@ export default {
         left: `${x}%`,
         top: `${y}%`,
         justifyContent: jc,
+        backgroundColor: this.seatMap[index].color
       };
     },
   },
