@@ -161,7 +161,7 @@ export default {
         left: `${x}%`,
         top: `${y}%`,
         justifyContent: jc,
-        backgroundColor: this.seatMap[index].color
+        // backgroundColor: this.seatMap[index].color
       };
     },
   },
