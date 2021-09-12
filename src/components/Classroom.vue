@@ -14,20 +14,33 @@
       <div class="tv"></div>
 
       <div class="furniture tables-left">
-        <div class="table" v-for="table in 6" :key="table"></div>
+        <div class="table" v-for="index in 6" :key="index">
+          <Seat class="seat" :index="30 + index"/>
+          <Seat class="seat" :index="36 + index"/>
+        </div>
       </div>
 
       <div class="furniture tables-right">
-        <div class="table" v-for="table in 6" :key="table"></div>
-        <div class="table elvera"></div>
+        <div class="table" v-for="index in 6" :key="index">
+
+          <Seat class="seat" :index="42 + index"/>
+          <Seat class="seat" :index="48 + index"/>
+        </div>
+        <div class="table elvera">Mvr. Neijland</div>
       </div>
 
       <div class="furniture tables-horizontal-right">
-        <div class="table" v-for="table in 2" :key="table"></div>
+        <div class="table" v-for="index in 2" :key="index">
+          <Seat class="seat" :index="54 + index" />
+          <Seat class="seat" :index="56 + index" />
+        </div>
       </div>
 
       <div class="furniture tables-bottom">
-        <div class="table" v-for="table in 2" :key="table"></div>
+        <div class="table" v-for="index in 2" :key="index">
+          <Seat class="seat" :index="58 + index"/>
+          <Seat class="seat" :index="60 + index"/>
+        </div>
       </div>
 
       <Seat
@@ -163,9 +176,6 @@ export default {
 }
 
 .page {
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
   height: 100%;
 }
 
@@ -178,14 +188,31 @@ export default {
 }
 
 .table {
-  background: #ab5c2c;
+  background: #c58156;
   border-radius: 4%;
   width: 16%;
   height: 10%;
   margin: 0.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  flex-direction: column;
 
   &.elvera {
     width: 20%;
+  }
+  .seat {
+    position: static;
+    transform: none;
+    height: 40%;
+    width: 90%;
+    z-index: 1;
+
+    &:first-child {
+      margin-bottom: 2px;
+    }
   }
 }
 
@@ -197,23 +224,19 @@ export default {
   flex-direction: column;
 }
 
-.tables-left {
-  // position: absolute;
-}
 
 .tables-right {
   align-items: flex-end;
 }
 
 .tables-horizontal-right {
-  // align-items: flex-end;
   position: absolute;
   left: 100%;
   top: 54%;
-  // flex-direction: row;
   display: block;
+
   .table {
-    display: inline-block;
+    display: inline-flex;
   }
 }
 
@@ -228,14 +251,6 @@ export default {
 }
 
 .classroom {
-  
-  // background: url("../assets/classroom.jpg");
-  // background-size: contain;
-  // background-repeat: no-repeat;
-  // background-position: 50%;
-  // height: 100%;
-  // width: 100%;
-
   left: 50%;
   transform: translateX(-50%);
 
@@ -254,9 +269,4 @@ export default {
     left: 76%;
   }
 }
-
-// .seat {
-//     flex: 0 1 50%;
-//     width: 50%;
-// }
 </style>

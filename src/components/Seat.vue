@@ -2,7 +2,7 @@
   <!-- <div class="seat" contenteditable>
     {{ text }}
   </div> -->
-  <input type="text" class="seat" v-model="student">
+  <input type="text" class="seat" v-model="student" v-if="index !== 48 && index !== 54">
 </template>
 
 <script>
@@ -46,8 +46,6 @@ export default {
   transform: rotate(-29deg);
   font-size: 2vh;
   font-weight: bold;
-  // font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  // font-family: 'Oswald', sans-serif;
   display: flex;
   text-align: center;
   align-items: center;
