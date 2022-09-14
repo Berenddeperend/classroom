@@ -29,7 +29,7 @@
         <div class="table elvera">Mvr. Neijland</div>
       </div>
 
-      <div class="furniture tables-horizontal-right">
+      <div class="furniture tables-right-second-column">
         <div class="table" v-for="index in 2" :key="index">
           <Seat class="seat" :index="54 + index" />
           <Seat class="seat" :index="56 + index" />
@@ -229,14 +229,14 @@ export default {
   align-items: flex-end;
 }
 
-.tables-horizontal-right {
+.tables-right-second-column {
   position: absolute;
   left: 100%;
-  top: 54%;
+  top: 43.7%;
   display: block;
 
   .table {
-    display: inline-flex;
+    // display: inline-flex;
   }
 }
 

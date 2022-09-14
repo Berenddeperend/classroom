@@ -1,8 +1,5 @@
 <template>
-  <!-- <div class="seat" contenteditable>
-    {{ text }}
-  </div> -->
-  <input type="text" class="seat" v-model="student" v-if="index !== 48 && index !== 54">
+  <input type="text" class="seat" v-model="student" >
 </template>
 
 <script>
