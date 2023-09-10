@@ -90,7 +90,9 @@ export default {
         { x: 0, y: 9, color: a },
         { x: 5, y: 9, color: a },
         { x: 0, y: 10, color: b },
+        { x: 5, y: 10, color: a },
         { x: 0, y: 11, color: b },
+        { x: 5, y: 11, color: a },
         { x: 0, y: 12, color: a },
         { x: 0, y: 13, color: a },
         { x: 0, y: 14, color: b },
@@ -201,6 +203,7 @@ export default {
   flex-direction: column;
 
   &.elvera {
+    margin-right: -29px;
     width: 20%;
   }
   .seat {
