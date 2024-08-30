@@ -1,1 +1,1 @@
-export const maxClassSize = 30;
+export const maxClassSize = 32;

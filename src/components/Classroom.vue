@@ -1,14 +1,6 @@
 <template>
   <div class="page">
-    <!-- <input type="number" class="numberpicker" :max="seatMap.length" v-model="occupiedSeats" /> -->
     <div class="numberpicker">
-      <div>{{ occupiedSeats }}</div>
-      <input
-        type="range"
-        class="numberpicker"
-        :max="seatMap.length"
-        v-model="occupiedSeats"
-      />
     </div>
     <div class="classroom" ref="classroom">
       <div class="tv"></div>
@@ -44,30 +36,35 @@
       </div>
 
       <Seat
-        v-for="(seat, index) in Number(occupiedSeats)"
+        v-for="(seat, index) in Number(occupiedSeats -1)"
         :key="seat + $store.state.activeClass"
         :index="index"
         class="seat"
         ref="seat"
         :style="setPositionForSeat(index)"
       />
-      <!-- <Seat :editable="false" class="seat elvera" :text="'Docent'" /> -->
+
+      <!-- 63 because I miscounted -->
+      <Seat
+        :index="63"
+        class="seat"
+        ref="seat"
+        :style="setPositionForSeat(31)"
+      />
     </div>
   </div>
 </template>
 <script>
-import {maxClassSize} from '@/constants.js'
 import Seat from "@/components/Seat";
 
 const a = 'white';
-// const b = '#ab5c2c'
 const b = '#f7d9c7'
 
 export default {
   components: { Seat },
   data() {
     return {
-      occupiedSeats: maxClassSize,
+      occupiedSeats: 32,
       seatMap: [
         { x: 0, y: 0, color: a },
         { x: 5, y: 0, color: a },
@@ -105,13 +102,14 @@ export default {
     };
   },
   mounted() {
+    console.log(this.seatMap.length)
+
     // this.updatePositions ();
     setTimeout(() => {
       this.updatePositions();
     }, 200);
 
     window.addEventListener("resize", this.updatePositions);
-    // console.dir(document.querySelector('.classroom'))
   },
   computed: {
     maxSeatX() {
@@ -150,6 +148,7 @@ export default {
 
       const x = arduinoMap(this.seatMap[index].x, 0, this.maxSeatX, 20, 60);
       const y = arduinoMap(this.seatMap[index].y, 0, this.maxSeatY, 5, 85);
+
       let jc =
         this.seatMap[index].x === this.maxSeatX ? "flex-end" : "flex-start";
       if (

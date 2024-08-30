@@ -30,6 +30,14 @@ const store = new Vuex.Store({
       newClasses[state.activeClass][payload.index] = payload.student;
       state.classes = newClasses
     },
+    renameClass(state, payload) {
+      const newClasses = cloneDeep(state.classes);
+      newClasses[payload.newName] = newClasses[payload.oldName]
+      delete newClasses[payload.oldName]
+
+      state.classes = newClasses
+      state.activeClass = payload.newName
+    },
     removeClass(state, className) {
       const newClasses = cloneDeep(state.classes);
       delete newClasses[className]
