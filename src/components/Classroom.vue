@@ -1,6 +1,13 @@
 <template>
   <div class="page">
     <div class="numberpicker">
+      <div>{{ occupiedSeats }}</div>
+      <input
+        type="range"
+        class="numberpicker"
+        :max="seatMap.length"
+        v-model="occupiedSeats"
+      />
     </div>
     <div class="classroom" ref="classroom">
       <div class="tv"></div>
@@ -36,7 +43,7 @@
       </div>
 
       <Seat
-        v-for="(seat, index) in Number(occupiedSeats -1)"
+        v-for="(seat, index) in Number(occupiedSeats)"
         :key="seat + $store.state.activeClass"
         :index="index"
         class="seat"
@@ -49,6 +56,7 @@
         :index="63"
         class="seat"
         ref="seat"
+        v-if="occupiedSeats == 32"
         :style="setPositionForSeat(31)"
       />
     </div>
