@@ -14,31 +14,31 @@
 
       <div class="furniture tables-left">
         <div class="table" v-for="index in 6" :key="index">
-          <Seat class="seat" :index="30 + index"/>
-          <Seat class="seat" :index="36 + index"/>
+          <Seat class="seat" :index="32 + index"/>
+          <Seat class="seat" :index="38 + index"/>
         </div>
       </div>
 
       <div class="furniture tables-right">
         <div class="table" v-for="index in 6" :key="index">
 
-          <Seat class="seat" :index="42 + index"/>
-          <Seat class="seat" :index="48 + index"/>
+          <Seat class="seat" :index="44 + index"/>
+          <Seat class="seat" :index="50 + index"/>
         </div>
         <div class="table elvera">Mvr. Neijland</div>
       </div>
 
       <div class="furniture tables-right-second-column">
         <div class="table" v-for="index in 2" :key="index">
-          <Seat class="seat" :index="54 + index" />
           <Seat class="seat" :index="56 + index" />
+          <Seat class="seat" :index="58 + index" />
         </div>
       </div>
 
       <div class="furniture tables-bottom">
         <div class="table" v-for="index in 2" :key="index">
-          <Seat class="seat" :index="58 + index"/>
           <Seat class="seat" :index="60 + index"/>
+          <Seat class="seat" :index="62 + index"/>
         </div>
       </div>
 
