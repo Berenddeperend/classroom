@@ -52,13 +52,13 @@
       />
 
       <!-- 63 because I miscounted -->
-      <Seat
-        :index="63"
-        class="seat"
-        ref="seat"
-        v-if="occupiedSeats == 32"
-        :style="setPositionForSeat(31)"
-      />
+<!--      <Seat-->
+<!--        :index="63"-->
+<!--        class="seat bobr"-->
+<!--        ref="seat"-->
+<!--        v-if="occupiedSeats == 32"-->
+<!--        :style="setPositionForSeat(31)"-->
+<!--      />-->
     </div>
   </div>
 </template>
@@ -72,32 +72,32 @@ export default {
   components: { Seat },
   data() {
     return {
-      occupiedSeats: 32,
+      occupiedSeats: 33,
       seatMap: [
         { x: 0, y: 0, color: a },
-        { x: 5, y: 0, color: a },
+        { x: 6, y: 0, color: a },
         { x: 0, y: 1, color: a },
-        { x: 5, y: 1, color: a },
+        { x: 6, y: 1, color: a },
         { x: 0, y: 2, color: b },
-        { x: 5, y: 2, color: b },
+        { x: 6, y: 2, color: b },
         { x: 0, y: 3, color: b },
-        { x: 5, y: 3, color: b },
+        { x: 6, y: 3, color: b },
         { x: 0, y: 4, color: a },
-        { x: 5, y: 4, color: a },
+        { x: 6, y: 4, color: a },
         { x: 0, y: 5, color: a },
-        { x: 5, y: 5, color: a },
+        { x: 6, y: 5, color: a },
         { x: 0, y: 6, color: b },
-        { x: 5, y: 6, color: b },
+        { x: 6, y: 6, color: b },
         { x: 0, y: 7, color: b },
-        { x: 5, y: 7, color: b },
+        { x: 6, y: 7, color: b },
         { x: 0, y: 8, color: a },
-        { x: 5, y: 8, color: a },
+        { x: 6, y: 8, color: a },
         { x: 0, y: 9, color: a },
-        { x: 5, y: 9, color: a },
+        { x: 6, y: 9, color: a },
         { x: 0, y: 10, color: b },
-        { x: 5, y: 10, color: a },
+        { x: 6, y: 10, color: a },
         { x: 0, y: 11, color: b },
-        { x: 5, y: 11, color: a },
+        { x: 6, y: 11, color: a },
         { x: 0, y: 12, color: a },
         { x: 0, y: 13, color: a },
         { x: 0, y: 14, color: b },
@@ -106,6 +106,7 @@ export default {
         { x: 3, y: 14, color: a },
         { x: 4, y: 14, color: b },
         { x: 5, y: 14, color: b },
+        { x: 6, y: 14, color: b },
       ],
     };
   },
@@ -272,6 +273,10 @@ export default {
 
 .seat {
   position: absolute;
+
+  &.bobr {
+    border: 1px solid red !important;
+  }
 
   &.elvera {
     position: absolute;
